@@ -6,11 +6,11 @@ metadata:
   name: webhook
 spec:
   template:
-    serviceAccountName: argo-events-sa
+    serviceAccountName: operate-workflow-sa
   dependencies:
-  - name: github
-    eventSourceName: github
-    eventName: argo-combined-app
+    - name: github
+      eventSourceName: github
+      eventName: argo-combined-app
   triggers:
   - template:
       name: trigger
@@ -166,4 +166,3 @@ spec:
             dependencyName: github
             dataKey: body.after
           dest: spec.templates.0.dag.tasks.2.arguments.parameters.5.value
-
