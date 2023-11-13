@@ -196,7 +196,6 @@ export PASS=$(kubectl \
 
 echo $PASS 
 
-lHEVVE3A3ZUoLUZc
 #use admin / $PASS to login to ArgoCD UI
 
 open http://argo-cd.$BASE_HOST
@@ -265,3 +264,17 @@ kubectl argo rollouts \
     --watch
 
 open http://argo-combined-app.$BASE_HOST.nip.io
+
+--------
+
+ClusterWorkflowTemplate
+
+    volumeMounts:
+    - name: regcred
+      mountPath: /kaniko/.docker/
+    volumeMounts:
+    - name: github-access
+      mountPath: /.github/
+    volumeMounts:
+    - name: slack-access
+      mountPath: /.env/
